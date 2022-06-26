@@ -1,0 +1,11 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <h1>Hello Django!</h1>
+    {% for row in object_list %}
+        <div>
+        <h3>{{ row.name }}</h3>
+        <span>{{ row.price }}</span>
+        </div>
+    {% endfor %}
+{% endblock %}
