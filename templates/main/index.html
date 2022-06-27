@@ -1,11 +1,17 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <h1>Hello Django!</h1>
+    <form action="" method="get">
+        <input type="text" name="q" value="{{ q }}">
+        <button type="submit">search</button>
+    </form>
     {% for row in object_list %}
         <div>
-        <h3>{{ row.name }}</h3>
-        <span>{{ row.price }}</span>
+            <h3>{{ row.name }}</h3>
+            <span>{{ row.price }}</span>
+            <a href="{% url 'update' row.id %}">update</a>
         </div>
     {% endfor %}
+
+    <a href="{% url 'create' %}">create</a>
 {% endblock %}
