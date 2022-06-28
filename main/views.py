@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, View
 from main.models import BooksModel
 
 
@@ -36,5 +36,9 @@ class UpdateBookView(UpdateView):
     fields = ['name', 'price']
     success_url = '/'
 
-class DeleteBookView(DeleteView):
+class BookDeteailView(DetailView):
+    model = BooksModel
+    template_name = 'main/detail.html'
+
+class BookDeleteView(DeleteView):
     pass
