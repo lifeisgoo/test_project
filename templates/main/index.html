@@ -8,13 +8,27 @@
         <button type="submit">search</button>
     </form>
 
-    {% for row in object_list %}
+    {% for row in books %}
         <div>
             <h3><a href="{% url 'detail' row.pk %}">{{ row.name }}</a></h3>
             <span>{{ row.price }}</span>
+
             <a href="{% url 'update' row.id %}">update</a>
+
+            <form action="{% url 'delete' row.id %} " method="post" onsubmit="return confirm('delete post')">
+                {% csrf_token %}
+                <button type="submit">delete</button>
+            </form>
         </div>
+
     {% endfor %}
 
     <a href="{% url 'create' %}">create</a>
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">save</button>
+        </form>
+    </div>
 {% endblock %}
